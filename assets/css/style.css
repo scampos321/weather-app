@@ -1,0 +1,57 @@
+.nav-bar {
+    background-color: lightseagreen;
+    text-align: center;
+}
+
+#weather-title {
+    padding: 20px;
+    color: white;
+}
+
+#fiveday-title {
+    padding-left: 43%;
+}
+
+.search-btn {
+    background-color: black;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    padding-left: 15px;
+}
+
+dt {
+    padding-left: 40px;
+    padding-bottom: 3px;
+}
+
+#weather-card {
+    margin-left: 100px;
+}
+
+#city-title {
+    padding-left: 360px;
+}
+
+dl {
+    padding-left: 350px;
+    display: flex;
+}
+
+#temp {
+    padding-left: 15px
+}
+
+#wind {
+    padding-left: 15px;
+}
+
+#humid {
+    padding-left: 15px;
+}
+
+button {
+    "danger":
+}
