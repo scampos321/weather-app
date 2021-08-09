@@ -77,15 +77,20 @@ function setWeather(cityName) {
     }).then(function(response) {
 
 
-        cityTitle = $("#city-title").text(response.name + " " + setDate());
-        $("current-city-weather").append(cityTitle);
+        locationName = $("#location-name").text(response.name + " " + setDate());
+        $("current-city-weather").append(locationName);
+
         var calcTemp = parseInt((response.main.temp) * 9 / 5 - 459);
         var displayTemp = $("#temp").text("Temp: " + calcTemp + " °F");
+
         $("current-city-weather").append(displayTemp);
+
         var displayHumid = $("#humid").text("Humidity: " + response.main.humidity + " %");
         $("current-city-weather").append(displayHumid);
+
         var displayWind = $("#wind").text("Wind: " + response.wind.speed + " MPH");
         $("current-city-weather").append(displayWind);
+
         var coordLon = response.coord.lon;
         var coordLat = response.coord.lat;
 
@@ -132,17 +137,17 @@ function setWeather(cityName) {
         $.ajax({
             url: getFiveDayApi,
             method: "GET"
-        }).then(function(response5day) {
+        }).then(function(setFiveDayWeather) {
             $("#fiveday-output").empty();
-            console.log(response5day);
+            console.log(setFiveDayWeather);
             for (var i = 0, j = 0; j <= 5; i = i + 6) {
-                var read_date = response5day.list[i].dt;
-                if (response5day.list[i].dt != response5day.list[i + 1].dt) {
+                var setDate = setFiveDayWeather.list[i].dt;
+                if (setFiveDayWeather.list[i].dt != setFiveDayWeather.list[i + 1].dt) {
                     var fiveDayCards = $("<div>");
                     fiveDayCards.attr("class", "col m-1 card bg-info h-20 text-grey")
                     var d = new Date(0);
 
-                    d.setUTCSeconds(read_date);
+                    d.setUTCSeconds(setDate);
                     var date = d;
                     console.log(date);
 
@@ -156,18 +161,19 @@ function setWeather(cityName) {
                     var dateCard = $("<h5>").text(displayDate);
 
                     var skyImage = $("<img>");
-                    var currentSky = response5day.list[i].weather[0].main;
+
+                    var currentSky = setFiveDayWeather.list[i].weather[0].main;
                     if (currentSky === "Clouds") {
 
                         skyImage.attr("src", "./assets/images/cloud.png")
 
                     } else if (currentSky === "Clear") {
 
-                        skyImage.attr("src", "./assets/images/sunicon_adobespark.png")
+                        skyImage.attr("src", "./assets/images/31479-200.png")
 
                     } else if (currentSky === "Rain") {
 
-                        skyImage.attr("src", "./assets/images/rainicon_adobespark.png")
+                        skyImage.attr("src", "./assets/images/rainicon.png")
                     }
 
 
@@ -175,7 +181,7 @@ function setWeather(cityName) {
 
                     fiveDayCards.append(cityBoxName);
 
-                    var calTemp = response5day.list[i].main.temp;
+                    var calTemp = setFiveDayWeather.list[i].main.temp;
 
                     console.log(currentSky);
 
@@ -183,17 +189,21 @@ function setWeather(cityName) {
 
                     var currentTemp = $("<dt>").text("Temp:" + currentTemp + " °F");
 
-                    var currentHumid = $("<dt>").text("Humidity: " + response5day.list[i].main.humidity + " %");
+                    var currentHumid = $("<dt>").text("Humidity: " + setFiveDayWeather.list[i].main.humidity + " %");
 
                     var windBoxName = $("<dt>").text("Wind: " + response.wind.speed + "MPH");
 
                     fiveDayCards.append(dateCard);
+
                     fiveDayCards.append(skyImage);
+
                     fiveDayCards.append(currentTemp);
+
                     fiveDayCards.append(currentHumid);
+
                     fiveDayCards.append(windBoxName);
                     $("#fiveday-output").append(fiveDayCards);
-                    console.log(response5day);
+                    console.log(setFiveDayWeather);
                     j++;
                 }
 
@@ -220,8 +230,8 @@ function setDate(date) {
 
 
 $(document).on("click", "#location-list", function() {
-    var thisCity = $(this).attr("data-location");
-    setWeather(thisCity);
+    var locationStatus = $(this).attr("data-location");
+    setWeather(locationStatus);
 });
 
 function init() {
