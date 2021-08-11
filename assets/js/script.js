@@ -101,7 +101,7 @@ function setWeather(cityName) {
             method: "GET"
         }).then(function(getUV) {
 
-            var displayUV = $("<h2>").text(getUV.value);
+            var displayUV = $("<span>").text(getUV.value);
 
             var locationUV = $("<p>").text("UV Index: ");
 
@@ -112,23 +112,23 @@ function setWeather(cityName) {
             console.log(typeof getUV.value);
             if (getUV.value > 0 && getUV.value <= 2) {
 
-                displayUV.attr("class", "btn")
+                displayUV.attr("class", "red");
 
             } else if (getUV.value > 2 && getUV.value <= 5) {
 
-                displayUV.attr("class", "red")
+                displayUV.attr("class", "blue");
 
             } else if (getUV.value > 5 && getUV.value <= 7) {
 
-                displayUV.attr("class", "pink")
+                displayUV.attr("class", "pink");
 
             } else if (getUV.value > 7 && getUV.value <= 10) {
 
-                displayUV.attr("class", "blue")
+                displayUV.attr("class", "yellow");
 
             } else {
 
-                displayUV.attr("class", "green")
+                displayUV.attr("class", "green");
             }
         });
 
@@ -192,6 +192,7 @@ function setWeather(cityName) {
                     var currentHumid = $("<dt>").text("Humidity: " + setFiveDayWeather.list[i].main.humidity + " %");
 
                     var windBoxName = $("<dt>").text("Wind: " + response.wind.speed + "MPH");
+
 
                     fiveDayCards.append(dateCard);
 

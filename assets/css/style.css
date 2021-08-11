@@ -12,8 +12,10 @@
     padding-left: 43%;
 }
 
-.search-btn {
-    background-color: black;
+#search-btn {
+    background-color: greenyellow;
+    height: 40px;
+    width: 150px;
 }
 
 img {
@@ -52,6 +54,30 @@ dl {
     padding-left: 15px;
 }
 
-button {
-    "danger":
+#search-input {
+    width: 500px;
+}
+
+#addon-wrapping {
+    margin-left: 200px;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.red {
+    background-color: red;
 }
