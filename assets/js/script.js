@@ -107,7 +107,7 @@ function setWeather(cityName) {
 
             locationUV.append(displayUV);
 
-            $("current-city-weather").append(locationUV);
+            $("#current-city-weather").append(locationUV);
 
             console.log(typeof getUV.value);
             if (getUV.value > 0 && getUV.value <= 2) {
